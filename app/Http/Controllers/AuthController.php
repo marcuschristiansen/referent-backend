@@ -34,8 +34,6 @@ class AuthController extends Controller
         ]);
         $user->save();
 
-        $user->notify(new SignupActivate($user));
-
         return response()->json([
             'message' => 'Successfully created user!'
         ], 201);
