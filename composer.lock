@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "702a882e6daae95881028bc6d5145fea",
+    "content-hash": "0bd5c3e7c8f0345e2cf122deee812ca8",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4435,6 +4435,52 @@
                 "environment"
             ],
             "time": "2019-08-27T17:00:38+00:00"
+        },
+        {
+            "name": "vyuldashev/nova-permission",
+            "version": "v2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vyuldashev/nova-permission.git",
+                "reference": "fc21cf6d18ec1d5f168d4688e255ca154be50c45"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vyuldashev/nova-permission/zipball/fc21cf6d18ec1d5f168d4688e255ca154be50c45",
+                "reference": "fc21cf6d18ec1d5f168d4688e255ca154be50c45",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2",
+                "spatie/laravel-permission": "^3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Vyuldashev\\NovaPermission\\ToolServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Vyuldashev\\NovaPermission\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova tool for Spatie's Permission library.",
+            "keywords": [
+                "laravel",
+                "nova",
+                "spatie-permission"
+            ],
+            "time": "2019-09-04T10:50:14+00:00"
         },
         {
             "name": "zendframework/zend-diactoros",

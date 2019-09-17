@@ -17,7 +17,8 @@
         "laravel/telescope": "^2.1",
         "laravel/tinker": "^1.0",
         "nesbot/carbon": "^2.19",
-        "spatie/laravel-permission": "^3.0"
+        "spatie/laravel-permission": "^3.0",
+        "vyuldashev/nova-permission": "^2.1"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
