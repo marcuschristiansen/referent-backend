@@ -17,6 +17,7 @@
         "laravel/telescope": "^2.1",
         "laravel/tinker": "^1.0",
         "nesbot/carbon": "^2.19",
+        "runlinenl/nova-profile-tool": "^1.1",
         "spatie/laravel-permission": "^3.0",
         "vyuldashev/nova-permission": "^2.1"
     },

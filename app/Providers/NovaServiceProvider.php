@@ -5,6 +5,7 @@ namespace App\Providers;
 use Laravel\Nova\Nova;
 use Laravel\Nova\Cards\Help;
 use Illuminate\Support\Facades\Gate;
+use Runline\ProfileTool\ProfileTool;
 use Laravel\Nova\NovaApplicationServiceProvider;
 use Vyuldashev\NovaPermission\NovaPermissionTool;
 
@@ -78,6 +79,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         return [
             NovaPermissionTool::make(),
+            new ProfileTool,
         ];
     }
 
