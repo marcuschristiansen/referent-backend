@@ -2,15 +2,15 @@
 
 namespace App\Nova;
 
+use App\Nova\Role;
+use App\Nova\Permission;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\Password;
-use Vyuldashev\NovaPermission\Role;
 use Laravel\Nova\Fields\MorphToMany;
-use Vyuldashev\NovaPermission\Permission;
 
 class User extends Resource
 {
@@ -20,6 +20,13 @@ class User extends Resource
      * @var string
      */
     public static $model = 'App\\User';
+
+    /**
+     * The group the resource corresponds to.
+     *
+     * @var string
+     */
+    public static $group = 'Users';
 
     /**
      * The single value that should be used to represent the resource when being displayed.

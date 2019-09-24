@@ -14,7 +14,7 @@ class CreateActionEventsTable extends Migration
     public function up()
     {
         Schema::create('action_events', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->char('batch_id', 36);
             $table->unsignedInteger('user_id')->index();
             $table->string('name');
