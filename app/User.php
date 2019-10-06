@@ -8,10 +8,11 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable implements MustVerifyEmail, Auditable
 {
-    use HasApiTokens, Notifiable, SoftDeletes, HasRoles;
+    use HasApiTokens, Notifiable, SoftDeletes, HasRoles, \OwenIt\Auditing\Auditable;
 
     protected $guard_name = 'web';
 
