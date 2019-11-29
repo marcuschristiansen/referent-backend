@@ -42,4 +42,21 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * The attributes that should be added to the JSON response
+     *
+     * @var array
+     */
+    protected $appends = ['md5_email'];
+
+    /**
+     * Convert email address into md5 string
+     *
+     * @var string
+     */
+    public function getMd5EmailAttribute()
+    {
+        return md5(strtolower(trim($this->email)));
+    }
 }

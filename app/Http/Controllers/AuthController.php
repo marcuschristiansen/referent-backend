@@ -1,12 +1,14 @@
 <?php
 namespace App\Http\Controllers;
+use Log;
+use App\User;
+use Redirect;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Carbon\Carbon;
-use App\User;
 use App\Notifications\SignupActivate;
-use Redirect;
-use Log;
+use App\Http\Requests\LoginUserRequest;
+use App\Http\Requests\StoreUserRequest;
 
 class AuthController extends Controller
 {
@@ -19,15 +21,9 @@ class AuthController extends Controller
      * @param  [string] password_confirmation
      * @return [string] message
      */
-    public function signup(Request $request)
+    public function signup(StoreUserRequest $request)
     {
-        $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|string|email|unique:users',
-            'password' => 'required|string|confirmed'
-        ]);
         $user = new User([
-            'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'activation_token' => str_random(60)
@@ -49,14 +45,8 @@ class AuthController extends Controller
      * @return [string] token_type
      * @return [string] expires_at
      */
-    public function login(Request $request)
+    public function login(LoginUserRequest $request)
     {
-        $request->validate([
-            'email' => 'required|string|email',
-            'password' => 'required|string',
-            'remember_me' => 'boolean'
-        ]);
-
         $credentials = request(['email', 'password']);
         $credentials['active'] = 1;
         $credentials['deleted_at'] = null;
@@ -128,6 +118,6 @@ class AuthController extends Controller
         $user->activation_token = '';
         $user->save();
 
-        return Redirect::to(env('CLIENT_URL'));
+        return Redirect::to(env('CLIENT_URL'). 'login');
     }
 }

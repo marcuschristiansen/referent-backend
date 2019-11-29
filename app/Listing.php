@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\ListingAmenity;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 
@@ -24,4 +25,12 @@ class Listing extends Model implements Auditable
         'country_id',
         'zip_code'
     ];
+
+    /**
+     * The roles that belong to the user.
+     */
+    public function listingAmenities()
+    {
+        return $this->HasMany(ListingAmenity::class);
+    }
 }

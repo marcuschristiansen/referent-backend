@@ -1,5 +1,6 @@
 <?php
 
+use Kalnoy\Nestedset\NestedSet;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -14,7 +15,9 @@ class CreateListingAmenitiesTable extends Migration
     public function up()
     {
         Schema::create('listing_amenities', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
+            $table->string('name');
+            NestedSet::columns($table);
             $table->timestamps();
         });
     }
