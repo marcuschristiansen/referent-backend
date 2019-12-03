@@ -3,8 +3,8 @@
 use App\User;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Role;
 use Laravel\Nova\Tests\Fixtures\Post;
+use Spatie\Permission\Models\Permission;
 
 class UsersTableSeeder extends Seeder
 {
@@ -18,7 +18,6 @@ class UsersTableSeeder extends Seeder
         /** Administrators ***/
         $admins = [
             [
-                'name'              => env('ADMIN_NAME', 'John Doe'),
                 'email'             => env('ADMIN_EMAIL', 'hello@test.com'),
                 'email_verified_at' => now(),
                 'password'          => bcrypt(env('ADMIN_PASSWORD', 'secret')),
@@ -28,9 +27,9 @@ class UsersTableSeeder extends Seeder
             ],
         ];
 
-        $adminRole = Role::findOrCreate('Admin');
+        $adminPermission = Permission::findOrCreate('access-admin');
 
-        collect($admins)->each(function($admin) use ($adminRole) {
+        collect($admins)->each(function($admin) use ($adminPermission) {
 
             /** @var User $user */
             if (!$user = User::query()
@@ -40,7 +39,7 @@ class UsersTableSeeder extends Seeder
                 $user = factory(User::class)->create($admin);
             }
 
-            $user->assignRole($adminRole);
+            $user->givePermissionTo($adminPermission);
         });
     }
 }

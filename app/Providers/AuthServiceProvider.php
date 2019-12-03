@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Profile;
 use Laravel\Passport\Passport;
+use App\Policies\ProfilePolicy;
 use App\Policies\PermissionPolicy;
 use Illuminate\Support\Facades\Gate;
 use Spatie\Permission\Models\Permission;
@@ -17,6 +19,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         Permission::class => PermissionPolicy::class,
+        Profile::class => ProfilePolicy::class,
     ];
 
     /**

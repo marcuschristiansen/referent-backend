@@ -1,0 +1,162 @@
+{
+	"info": {
+		"_postman_id": "a463222a-377b-4d2f-bde5-6001a4aafdf4",
+		"name": "Referent",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "Create Profile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "en",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "Marcus",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "Christiansen",
+									"type": "text"
+								},
+								{
+									"key": "country_id",
+									"value": "209",
+									"type": "text"
+								},
+								{
+									"key": "id_number",
+									"value": "12345678910",
+									"type": "text"
+								},
+								{
+									"key": "credit_check",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "tenant",
+									"value": "true",
+									"type": "text"
+								},
+								{
+									"key": "landlord",
+									"value": "false",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{domain}}/api/profiles",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"profiles"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Country",
+			"item": [
+				{
+					"name": "Get Countries",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Accept-Language",
+								"type": "text",
+								"value": "en"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://{{domain}}/api/countries",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"countries"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

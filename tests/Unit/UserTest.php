@@ -23,7 +23,6 @@ class UserTest extends TestCase
         $user = factory(User::class)->create();
 
         $this->assertDatabaseHas('users', [
-            'name'              => $user->name,
             'email'             => $user->email,
             'active'            => 0,
             'activation_token'  => $user->activation_token,
@@ -62,6 +61,9 @@ class UserTest extends TestCase
 
         $user->delete();
 
-        $this->assertSoftDeleted('users', $user->toArray());
+        $userInfoArray = $user->toArray();
+        unset($userInfoArray["md5_email"]);
+
+        $this->assertSoftDeleted('users', $userInfoArray);
     }
 }
