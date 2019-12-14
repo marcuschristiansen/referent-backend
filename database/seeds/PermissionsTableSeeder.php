@@ -12,10 +12,8 @@ class PermissionsTableSeeder extends Seeder
      */
     public function run()
     {
-        $adminPermission = Permission::query()->firstOrCreate([
+        Permission::query()->firstOrCreate([
             'name' => 'access-admin',
         ]);
-
-        $adminPermission->assignRole('Admin');
     }
 }

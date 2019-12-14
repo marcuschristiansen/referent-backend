@@ -116,6 +116,7 @@ class AuthController extends Controller
         }
         $user->active = true;
         $user->activation_token = '';
+        $user->email_verified_at = now();
         $user->save();
 
         return Redirect::to(env('CLIENT_URL'). 'login');

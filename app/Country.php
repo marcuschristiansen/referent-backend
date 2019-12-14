@@ -22,7 +22,7 @@ class Country extends Model
 
         // Order by name ASC
         static::addGlobalScope('order', function (Builder $builder) {
-            $builder->orderBy('name', 'desc');
+            $builder->orderBy('name', 'asc');
         });
     }
 }

@@ -2,13 +2,14 @@
 
 namespace App;
 
+use App\Profile;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
+use OwenIt\Auditing\Contracts\Auditable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use OwenIt\Auditing\Contracts\Auditable;
 
 class User extends Authenticatable implements MustVerifyEmail, Auditable
 {
@@ -22,7 +23,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'active', 'activation_token', 'email_verified_at'
+        'email', 'password', 'active', 'activation_token', 'email_verified_at'
     ];
 
     /**
@@ -51,6 +52,13 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     protected $appends = ['md5_email'];
 
     /**
+     * The relationships that should always be loaded.
+     *
+     * @var array
+     */
+    protected $with = ['profile', 'roles'];
+
+    /**
      * Convert email address into md5 string
      *
      * @var string
@@ -58,5 +66,13 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     public function getMd5EmailAttribute()
     {
         return md5(strtolower(trim($this->email)));
+    }
+
+    /**
+     * Get the profile record associated with the user.
+     */
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
     }
 }

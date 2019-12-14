@@ -28,6 +28,11 @@ Route::group(['prefix' => 'auth'], function () {
     });
 });
 
+Route::middleware('auth:api')->group(function () {
+    Route::resource('profiles', 'ProfileController');
+    Route::get('countries', 'CountryController@index');
+});
+
 Route::group(['namespace' => 'Auth', 'middleware' => 'api', 'prefix' => 'password'], function () {    
     Route::post('create', 'PasswordResetController@create');
     Route::get('find/{token}', 'PasswordResetController@find');
