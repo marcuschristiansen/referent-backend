@@ -7,8 +7,6 @@ use App\User;
 use App\State;
 use App\Country;
 use App\Listing;
-use Illuminate\Support\Facades\Log;
-
 
 /**
  * Class StoreListingUseCase.
@@ -25,7 +23,6 @@ class StoreListingUseCase
      */
     public function handle(User $user, array $data)
     {
-        Log::debug($data);
         $country = Country::where('name', $data['residential_address']['country'])->first();
         $state = State::firstOrCreate(
             [

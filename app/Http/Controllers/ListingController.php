@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use App\Http\Resources\ListingResource;
 use App\Http\Requests\StoreListingRequest;
 use App\UseCases\Listing\StoreListingUseCase;
@@ -39,7 +38,6 @@ class ListingController extends Controller
      */
     public function store(StoreListingRequest $request, StoreListingUseCase $useCase): ListingResource
     {
-        // Log::debug($request->all());
         $listing = $useCase->handle(auth('api')->user(), $request->all());
 
         return new ListingResource($listing);
