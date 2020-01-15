@@ -75,4 +75,12 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     {
         return $this->hasOne(Profile::class);
     }
+
+    /**
+     * Get the listings for the user.
+     */
+    public function listings()
+    {
+        return $this->hasMany(Listing::class);
+    }
 }

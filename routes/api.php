@@ -30,7 +30,11 @@ Route::group(['prefix' => 'auth'], function () {
 
 Route::middleware('auth:api')->group(function () {
     Route::resource('profiles', 'ProfileController');
+    Route::resource('listings', 'ListingController');
     Route::get('countries', 'CountryController@index');
+    Route::get('listing-types', 'ListingTypeController@index');
+    Route::get('listing-spaces', 'ListingSpaceController@index');
+    Route::get('listing-amenities', 'ListingAmenityController@index');
 });
 
 Route::group(['namespace' => 'Auth', 'middleware' => 'api', 'prefix' => 'password'], function () {    

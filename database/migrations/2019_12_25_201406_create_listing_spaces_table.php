@@ -1,11 +1,10 @@
 <?php
 
-use Kalnoy\Nestedset\NestedSet;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateListingAmenitiesTable extends Migration
+class CreateListingSpacesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +13,9 @@ class CreateListingAmenitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('listing_amenities', function (Blueprint $table) {
+        Schema::create('listing_spaces', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            NestedSet::columns($table);
-            $table->enum('type', ['checkbox', 'select', 'radio'])->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CreateListingAmenitiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('listing_amenities');
+        Schema::dropIfExists('listing_spaces');
     }
 }

@@ -14,34 +14,92 @@ class ListingAmenitiesTableSeeder extends Seeder
     {
         $amenities = [
             [
+                'name'  => 'Furnished',
+                'type'  => 'checkbox'
+            ],
+            [
+                'name'  => 'Airconditioning',
+                'type'  => 'checkbox'
+            ],
+            [
+                'name'  => 'Pool',
+                'type'  => 'checkbox'
+            ],
+            [
+                'name'  => 'Elevator',
+                'type'  => 'checkbox'
+            ],
+            [
+                'name'  => 'Access Gate',
+                'type'  => 'checkbox'
+            ],
+            [
+                'name'  => 'Alarm',
+                'type'  => 'checkbox'
+            ],
+            [
+                'name'  => 'Built-in Stove',
+                'type'  => 'checkbox'
+            ],
+            [
+                'name'  => 'Ceiling Fan',
+                'type'  => 'checkbox'
+            ],
+            [
+                'name'  => 'Braai Facilities',
+                'type'  => 'checkbox'
+            ],
+            [
+                'name'  => 'Visitor Parking',
+                'type'  => 'checkbox'
+            ],
+            [
+                'name'  => 'Security Guard',
+                'type'  => 'checkbox'
+            ],
+            [
+                'name'  => 'Electric Fence',
+                'type'  => 'checkbox'
+            ],
+            [
+                'name'  => 'Store Room',
+                'type'  => 'checkbox'
+            ],
+            [
+                'name'  => 'Fire Place',
+                'type'  => 'checkbox'
+            ],
+            [
+                'name'  => 'Gym',
+                'type'  => 'checkbox'
+            ],
+            [
+                'name'  => 'Washing Line',
+                'type'  => 'checkbox'
+            ],
+            [
+                'name'  => 'Intercom',
+                'type'  => 'checkbox'
+            ],
+            [
+                'name'  => 'Smoking Allowed',
+                'type'  => 'checkbox'
+            ],
+            [
                 'name'  => 'Internet',
-                'children'  => [
-                    [
-                        'name'  => 'Provier',
-                        'children'  => [
-                            ['name' => 'WebAfrica'],
-                            ['name' => 'Afrihost'],
-                            ['name' => 'Cybersmart']
-                        ]
-                    ],
-                    [
-                        'name'  => 'Type',
-                        'children'  => [
-                            ['name' => 'ADSL'],
-                            ['name' => 'Fiber'],
-                            ['name' => 'LTE']
-                        ]
-                    ],
-                    [
-                        'name' => 'Speed',
-                        'children' => [
-                            ['name' => '10MBs'],
-                            ['name' => '20MBs'],
-                            ['name' => '50MBs'],
-                            ['name' => '100MBs'],
-                        ]
-                    ]
-                ]
+                'type'  => 'checkbox',
+            ],
+            [
+                'name'  => 'Cleaner',
+                'type'  => 'checkbox',
+            ],
+            [
+                'name'  => 'Gardener',
+                'type'  => 'checkbox',
+            ],
+            [
+                'name'  => 'Handyman',
+                'type'  => 'checkbox',
             ]
         ];
 

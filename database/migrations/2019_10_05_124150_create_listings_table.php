@@ -15,22 +15,23 @@ class CreateListingsTable extends Migration
     {
         Schema::create('listings', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->unsignedInteger('user_id');
+            $table->string('name')->nullable();
             $table->unsignedInteger('listing_type_id');
+            $table->boolean('house_share');
             $table->string('residential_address');
             $table->string('unit_number')->nullable();
             $table->unsignedInteger('city_id');
-            $table->unsignedInteger('state_id');
-            $table->unsignedInteger('country_id');
             $table->string('zip_code');
+            $table->json('rooms')->nullable();
+            $table->json('parking')->nullable();
             $table->timestamps();
         });
 
         Schema::table('listings', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('listing_type_id')->references('id')->on('listing_types');
             $table->foreign('city_id')->references('id')->on('cities');
-            $table->foreign('state_id')->references('id')->on('states');
-            $table->foreign('country_id')->references('id')->on('countries');
         });
     }
 
