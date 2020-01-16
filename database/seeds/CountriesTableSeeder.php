@@ -3,6 +3,7 @@
 use App\Country;
 use GuzzleHttp\Client;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class CountriesTableSeeder extends Seeder
 {
@@ -20,12 +21,16 @@ class CountriesTableSeeder extends Seeder
         if($result->getStatusCode() == 200) {
             $countries = (string) $result->getBody();
             foreach (json_decode($countries) as $key => $country) {
-                Country::updateOrCreate(
+                $newCountry = Country::updateOrCreate(
                     ['name' => $country->name],
                     [
                         'code' => $country->alpha2Code
                     ]
                 );
+
+                if($country->name == 'United States of America') {
+                    $newCountry->update(['name' => 'United States']);
+                }
             }
         }
     }
