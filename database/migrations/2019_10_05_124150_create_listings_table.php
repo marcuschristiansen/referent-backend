@@ -22,7 +22,7 @@ class CreateListingsTable extends Migration
             $table->string('residential_address');
             $table->string('unit_number')->nullable();
             $table->unsignedInteger('city_id');
-            $table->string('zip_code');
+            $table->string('zip_code')->nullable();
             $table->json('rooms')->nullable();
             $table->json('parking')->nullable();
             $table->timestamps();

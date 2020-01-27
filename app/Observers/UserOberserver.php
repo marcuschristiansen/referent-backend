@@ -3,7 +3,7 @@
 namespace App\Observers;
 
 use App\User;
-use App\Notifications\SignupActivate;
+use App\Jobs\ProcessInviteEmails;
 
 class UserObserver
 {
@@ -19,6 +19,6 @@ class UserObserver
             'activation_token'  => str_random(60)
         ]);
 
-        $user->notify(new SignupActivate($user));
+        ProcessInviteEmails::dispatch($user);
     }
 }

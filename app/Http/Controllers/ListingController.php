@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Resources\ListingResource;
 use App\Http\Requests\StoreListingRequest;
+use App\UseCases\Listing\GetListingsUseCase;
 use App\UseCases\Listing\StoreListingUseCase;
 
 class ListingController extends Controller
@@ -14,9 +15,11 @@ class ListingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(GetListingsUseCase $useCase)
     {
-        //
+        $listings = $useCase->handle(auth('api')->user());
+
+        return ListingResource::collection($listings);
     }
 
     /**

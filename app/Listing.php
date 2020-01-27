@@ -40,6 +40,13 @@ class Listing extends Model implements Auditable
     ];
 
     /**
+     * The relationships that should always be loaded.
+     *
+     * @var array
+     */
+    protected $with = ['city', 'city.state'];
+
+    /**
      * The amenities that belong to the listing.
      */
     public function listingAmenities()

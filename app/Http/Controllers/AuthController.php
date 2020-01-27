@@ -7,8 +7,10 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\SignupActivate;
+use App\Http\Resources\UserCollection;
 use App\Http\Requests\LoginUserRequest;
 use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\InviteUserRequest;
 
 class AuthController extends Controller
 {
@@ -33,6 +35,34 @@ class AuthController extends Controller
         return response()->json([
             'message' => 'Successfully created user!'
         ], 201);
+    }
+
+    /**
+     * Invite users
+     *
+     * @param  [string] emails
+     */
+    public function invite(InviteUserRequest $request)
+    {
+        foreach($request->emails as $email) {
+                        // check if the string is a valid email
+            if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                continue;
+            }
+
+            $users[] = User::firstOrCreate (
+                [
+                    'email' => $email
+                ],
+                [
+                    'email' => $email,
+                    'password' => bcrypt('secret'),
+                    'activation_token' => str_random(60)
+                ]
+            );
+        }
+        
+        return new UserCollection(collect($users));
     }
   
     /**
