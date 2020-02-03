@@ -5,6 +5,7 @@ use App\User;
 use Redirect;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Jobs\ProcessInviteEmails;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\SignupActivate;
 use App\Http\Resources\UserCollection;
@@ -45,24 +46,15 @@ class AuthController extends Controller
     public function invite(InviteUserRequest $request)
     {
         foreach($request->emails as $email) {
-                        // check if the string is a valid email
+            // check if the string is a valid email
             if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 continue;
             }
-
-            $users[] = User::firstOrCreate (
-                [
-                    'email' => $email
-                ],
-                [
-                    'email' => $email,
-                    'password' => bcrypt('secret'),
-                    'activation_token' => str_random(60)
-                ]
-            );
+            ProcessInviteEmails::dispatch($email);
+            $emails[] = $email;
         }
         
-        return new UserCollection(collect($users));
+        return response()->json($emails);
     }
   
     /**

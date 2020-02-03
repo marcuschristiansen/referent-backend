@@ -3,7 +3,7 @@
 namespace App\Observers;
 
 use App\User;
-use App\Jobs\ProcessInviteEmails;
+use App\Jobs\ProcessNewUserEmails;
 
 class UserObserver
 {
@@ -19,6 +19,6 @@ class UserObserver
             'activation_token'  => str_random(60)
         ]);
 
-        ProcessInviteEmails::dispatch($user);
+        ProcessNewUserEmails::dispatch($user);
     }
 }

@@ -44,7 +44,7 @@ class Listing extends Model implements Auditable
      *
      * @var array
      */
-    protected $with = ['city', 'city.state'];
+    protected $with = ['city', 'city.state', 'user', 'amenities', 'spaces'];
 
     /**
      * The amenities that belong to the listing.
@@ -60,5 +60,29 @@ class Listing extends Model implements Auditable
     public function city()
     {
         return $this->belongsTo(City::class);
+    }
+
+    /**
+     * Get the user that owns the listing.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     * The amenities that belong to the listing.
+     */
+    public function amenities()
+    {
+        return $this->belongsToMany(ListingAmenity::class);
+    }
+
+    /**
+     * The spaces that belong to the listing.
+     */
+    public function spaces()
+    {
+        return $this->belongsToMany(ListingSpace::class);
     }
 }

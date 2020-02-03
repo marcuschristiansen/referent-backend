@@ -2,8 +2,8 @@
 
 namespace App\Jobs;
 
-use App\User;
 use Illuminate\Bus\Queueable;
+use App\Notifications\InviteNewUsers;
 use App\Notifications\SignupActivate;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Queue\SerializesModels;
@@ -16,16 +16,16 @@ class ProcessInviteEmails implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $user;
+    protected $email;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct($email)
     {
-        $this->user = $user;
+        $this->email = $email;
     }
 
     /**
@@ -38,8 +38,8 @@ class ProcessInviteEmails implements ShouldQueue
         // Allow only 2 emails every 1 second
         Redis::throttle('referent-invites')->allow(2)->every(1)->then(function () {
 
-            Notification::send($this->user, new SignupActivate());
-
+            Notification::route('mail', $this->email)->notify(new InviteNewUsers());
+            
         }, function () {
             // Could not obtain lock; this job will be re-queued
             return $this->release(2);

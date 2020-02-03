@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ListingSpacesTableSeeder::class);
         $this->call(ListingsTableSeeder::class);
         $this->call(ListingAmenitiesTableSeeder::class);
+        $this->call(LeasesTableSeeder::class);
     }
 }

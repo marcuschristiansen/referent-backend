@@ -14,9 +14,9 @@ class CreateListingListingAmenityPivotTable extends Migration
     {
         Schema::create('listing_listing_amenity', function (Blueprint $table) {
             $table->integer('listing_id')->unsigned()->index();
-            $table->foreign('listing_id')->references('id')->on('listing_amenities')->onDelete('cascade');
+            $table->foreign('listing_id')->references('id')->on('listings')->onDelete('cascade');
             $table->integer('listing_amenity_id')->unsigned()->index();
-            $table->foreign('listing_amenity_id')->references('id')->on('listings')->onDelete('cascade');
+            $table->foreign('listing_amenity_id')->references('id')->on('listing_amenities')->onDelete('cascade');
             $table->primary(['listing_id', 'listing_amenity_id']);
         });
     }

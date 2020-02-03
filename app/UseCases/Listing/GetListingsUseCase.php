@@ -11,7 +11,7 @@ use App\Listing;
 class GetListingsUseCase
 {
     /**
-     * @param Listing $user
+     * @param User $user
      * @param array  $data
      *
      * @throws \Exception

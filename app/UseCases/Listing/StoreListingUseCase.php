@@ -41,7 +41,7 @@ class StoreListingUseCase
             ]
         );
 
-        return Listing::create(
+        $listing = Listing::create(
             [
                 'user_id'               => $user->id,        
                 'name'                  => $data['profile']['name'],
@@ -55,5 +55,10 @@ class StoreListingUseCase
                 'parking'               => $data['spacesContinued'],
             ]
         );
+
+        $listing->amenities()->sync($data['extras']);
+        $listing->spaces()->sync($data['spaces']);
+
+        return $listing;
     }
 }
