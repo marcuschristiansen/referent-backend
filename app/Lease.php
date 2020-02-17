@@ -74,4 +74,12 @@ class Lease extends Model
     {
         return $this->belongsTo(Listing::class);
     }
+
+    /**
+     * The lease invites that belong to the lease.
+     */
+    public function lease_invites()
+    {
+        return $this->HasMany(LeaseInvite::class);
+    }
 }

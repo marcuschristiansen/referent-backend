@@ -18,6 +18,7 @@ class CreateLeaseInvitesTable extends Migration
             $table->string('email');
             $table->unsignedInteger('lease_id');
             $table->timestamps();
+            $table->softDeletes();
         });
 
         Schema::table('lease_invites', function (Blueprint $table) {

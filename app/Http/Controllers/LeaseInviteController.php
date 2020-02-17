@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\LeaseInvite;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreLeaseInviteRequest;
-use App\UseCases\LeaseInvite\StoreLeaseInviteUseCase;
 use App\Http\Resources\LeaseInviteResource;
+use App\Http\Requests\StoreLeaseInviteRequest;
+use App\UseCases\LeaseInvite\GetLeaseInvitesUseCase;
+use App\UseCases\LeaseInvite\StoreLeaseInviteUseCase;
 
 class LeaseInviteController extends Controller
 {
@@ -15,9 +16,11 @@ class LeaseInviteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(GetLeaseInvitesUseCase $useCase)
     {
-        //
+        $leaseInvites = $useCase->handle(auth('api')->user());
+
+        return LeaseInviteResource::collection($leaseInvites);
     }
 
     /**

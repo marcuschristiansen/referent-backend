@@ -55,7 +55,8 @@ class LeaseController extends Controller
      */
     public function show(Lease $lease)
     {
-        if($lease->belongsToTenant(auth('api')->user()) || $lease->belongsToLandlord(auth('api')->user())) {
+        $user = auth('api')->user();
+        if($user->can('view', $lease)) {
             return new LeaseResource($lease);
         }
         return response('Unauthorized.', 403);

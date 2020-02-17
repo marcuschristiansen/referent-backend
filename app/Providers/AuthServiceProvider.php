@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Lease;
 use App\Profile;
+use App\Policies\LeasePolicy;
 use Laravel\Passport\Passport;
 use App\Policies\ProfilePolicy;
 use App\Policies\PermissionPolicy;
@@ -20,6 +22,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         Permission::class => PermissionPolicy::class,
         Profile::class => ProfilePolicy::class,
+        Lease::class => LeasePolicy::class,
     ];
 
     /**

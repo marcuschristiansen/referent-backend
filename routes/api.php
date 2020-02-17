@@ -32,7 +32,10 @@ Route::group(['prefix' => 'auth'], function () {
 Route::middleware('auth:api')->group(function () {
     Route::resource('profiles', 'ProfileController');
     Route::resource('listings', 'ListingController');
+
+    Route::put('leases/{lease}/confirm', 'LeaseConfirmController');
     Route::resource('leases', 'LeaseController');
+    
     Route::resource('lease-invites', 'LeaseInviteController');
     Route::get('countries', 'CountryController@index');
     Route::get('listing-types', 'ListingTypeController@index');
