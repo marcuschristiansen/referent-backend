@@ -34,6 +34,7 @@ Route::middleware('auth:api')->group(function () {
     Route::resource('listings', 'ListingController');
 
     Route::put('leases/{lease}/confirm', 'LeaseConfirmController');
+    Route::get('leases/{lease}/pdf', 'LeasePdfController');
     Route::resource('leases', 'LeaseController');
     
     Route::resource('lease-invites', 'LeaseInviteController');
