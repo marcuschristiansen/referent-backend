@@ -20,10 +20,10 @@
             <h4 class="pt-8">ID Number</h4>
             <p>{{ $lease->listing->user->profile->id_number }}</p>
             <h4 class="py-8">And</h4>
-            <p class="underline italic">{{ $lease->tenant->profile->first_name }} {{ $lease->tenant->profile->last_name }}</p>
+            <p class="underline italic">{{ ($lease->tenant) ? $lease->tenant->profile->first_name : '___________________________________________' }} {{ ($lease->tenant) ? $lease->tenant->profile->last_name : '' }}</p>
             <p>(The Tenant)</p>
             <h4 class="pt-8">ID Number</h4>
-            <p>{{ $lease->tenant->profile->id_number }}</p>
+            <p>{{ ($lease->tenant) ? $lease->tenant->profile->id_number : '___________________________________________' }}</p>
         </div>
 
         <div class="leading-loose text-justify text-sm">
