@@ -4,8 +4,8 @@ namespace App\Providers;
 
 use App\User;
 use App\LeaseInvite;
-use App\Observers\UserObserver;
 use App\Observers\LeaseInviteObserver;
+use App\Observers\UserObserver;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
