@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Observers;
+namespace app\Observers;
 
 use App\LeaseInvite;
 use App\Jobs\ProcessLeaseInvite;
