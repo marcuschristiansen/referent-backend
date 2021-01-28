@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Observers;
+namespace App\Observers;
 
 use App\User;
 use App\Jobs\ProcessNewUserEmails;
